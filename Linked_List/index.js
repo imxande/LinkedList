@@ -23,14 +23,32 @@ class LinkedList {
         this.size++;
 
     }
+
+    printListData(){
+        // create a variable that holds head
+        let current = this.head;
+
+        // loop through to get data
+        while(current){
+            // print the data
+            console.log(current.data);
+            // do this until there are no more data in the linked list
+            current = current.next // if multiple data get every single piece from all the nodes in the linked list
+        }
+    }
+
 }
 
 // sanity check 
 n1 = new Node(100); // creates a new node
 console.log(n1); // prints the new created node
 list = new LinkedList(); //creates a new linked list
-console.log(list.data); // prints the data
+console.log(list); // prints the data
 
 // add a new node to LinkedList 
-list.insertFirst(400);
-console.log(list.data); // print the data in linked list
+list.insertFirst(400); // add 400 to our linked list head
+list.insertFirst(100);// add 100 to our linked list head 
+console.log(list); // print the data in linked list
+
+// since we might have multiple node data in the list lets print them
+list.printListData();
