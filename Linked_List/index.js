@@ -96,6 +96,26 @@ class LinkedList {
         this.size++;
     }
 
+    // method to get specific node in our linked list
+    getAt(index){
+        let current = this.head;
+        let count = 0;
+
+        // iterate through the linked list
+        while(current){
+            // check if count is equal to the index
+            if(count === index){
+                // print the value
+                console.log(current.data);
+            }
+            // increase count
+            count++;
+            // increment the loop
+            current = current.next;
+        }
+        return null;
+    }
+
     printListData(){
         // create a variable that holds head
         let current = this.head;
@@ -123,8 +143,10 @@ list.insertFirst(100); // add 100 to our linked list head
 list.insertLast(500); // add 500 to the tail of our linked list
 list.insertAt(200, 10); // sanity check, add 200 to a none existing index(nothing happens since index is out of range)
 list.insertAt(50, 0); // add 50 to the 0 index 
-list.insertAt(200, 2); // add 200 to the 2 index of the linked list     
-console.log(list); // print the linked list   
+list.insertAt(200, 2); // add 200 to the 2 index of the linked list
+list.getAt(2); // prints data at index 0 in the linked list      
+console.log(list); // print the linked list
+
 
 // since we might have multiple node data in the list lets print them
 list.printListData();
