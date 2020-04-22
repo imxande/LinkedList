@@ -24,6 +24,34 @@ class LinkedList {
 
     }
 
+    // method to add data to the end of the linked list
+    insertLast(data){
+        // create a new node pass the data
+        const node = new Node(data);
+        // create a place holder for the nodes in the linked list as we loop through
+        let current;
+
+        // check if list is empty
+        if(!this.head){
+            this.head = node;
+        }
+        // if linked list is populater then do the following
+        else {
+            // assign the variable current to the be the head of the linked list
+            current = this.head;
+
+            // loop until you get to the last node of the linked list
+            while(current.next){
+                // since we are looping then we want to assigned our current to be the last node
+                current = current.next;
+            }
+            // add the new created node to the last node/item of the linked list
+            current.next = node; 
+        }
+        // Increase the count
+        this.size++;
+    }
+
     printListData(){
         // create a variable that holds head
         let current = this.head;
@@ -46,9 +74,10 @@ list = new LinkedList(); //creates a new linked list
 console.log(list); // prints the data
 
 // add a new node to LinkedList 
-list.insertFirst(400); // add 400 to our linked list head
-list.insertFirst(100);// add 100 to our linked list head 
-console.log(list); // print the data in linked list
+list.insertFirst(400);  // add 400 to our linked list head
+list.insertFirst(100); // add 100 to our linked list head
+list.insertLast(500); // add 500 to the tail of our linked list   
+console.log(list); // print the linked list
 
 // since we might have multiple node data in the list lets print them
 list.printListData();
