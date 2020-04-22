@@ -52,6 +52,50 @@ class LinkedList {
         this.size++;
     }
 
+    // method to insert a node into specific index in the linked list, it takes data and the index
+    insertAt(data, index){
+        // check if index is out of range
+        if(index > 0 && index > this.size){
+            // return false
+            return;
+        }
+        // create a new node
+        const node = new Node(data);
+        // we need two variables to hold the current and previous node
+        let current; 
+        let previous;
+
+        // assign head to current variable
+        current = this.head;
+
+        // check if index is 0 
+        if(index === 0){
+            // if so then the existing head should be next to the node
+            node.next = this.head;
+            // if so then add created node as the head of the linked list
+            this.head = node;
+        }
+        else {
+            // set current to head
+            current = this.head;
+            // create a variable to count
+            let count = 0;
+
+            // iterate to the right position
+            while(count < index){
+                // increase the count
+                count++;
+                previous = current;
+                current = current.next;
+            }
+            // when you find right position add the new node there between previous and current
+            node.next = current;
+            previous.next = node;
+        }
+        // increase the linked list size
+        this.size++;
+    }
+
     printListData(){
         // create a variable that holds head
         let current = this.head;
@@ -76,8 +120,11 @@ console.log(list); // prints the data
 // add a new node to LinkedList 
 list.insertFirst(400);  // add 400 to our linked list head
 list.insertFirst(100); // add 100 to our linked list head
-list.insertLast(500); // add 500 to the tail of our linked list   
-console.log(list); // print the linked list
+list.insertLast(500); // add 500 to the tail of our linked list
+list.insertAt(200, 10); // sanity check, add 200 to a none existing index(nothing happens since index is out of range)
+list.insertAt(50, 0); // add 50 to the 0 index 
+list.insertAt(200, 2); // add 200 to the 2 index of the linked list     
+console.log(list); // print the linked list   
 
 // since we might have multiple node data in the list lets print them
 list.printListData();
